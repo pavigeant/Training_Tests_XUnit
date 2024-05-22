@@ -1,5 +1,3 @@
-
-using System.Runtime.CompilerServices;
 using Xunit.Sdk;
 
 namespace Training_Tests_XUnit;
@@ -16,6 +14,14 @@ public class AssertShould
             new("Jane", 21),
             new("Doe", 22)
         };
+    }
+
+    [Fact(Skip = "You should have a real good reason to skip a test. A skipped test shouldn't stay skipped very long or should just be deleted if it has become irrelevant")]
+    public void SkipTest()
+    {
+        // This test will be skipped
+
+        // A code that is no longer working and is making a test fail is NOT a good reason to skip a test
     }
 
     [Fact]
