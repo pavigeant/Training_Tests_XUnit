@@ -2,18 +2,29 @@ using Xunit.Sdk;
 
 namespace Training_Tests_XUnit;
 
-public class AssertShould
+public class AssertShould : IDisposable
 {
     private readonly List<Student> _students;
 
     public AssertShould()
     {
+        // For eact test in the class, a new instance of the class is created. If there are 20 tests,
+        // this constructor will get called 20 times
+        // This is also valid for each case of a Theory
+
+        // Avoid using static properties as they will be shared among all tests
+
         _students = new List<Student>
         {
             new("John", 20),
             new("Jane", 21),
             new("Doe", 22)
         };
+    }
+
+    public void Dispose()
+    {
+        // This method is called after each test in the class is executed, mirroring the constructor
     }
 
     [Fact(Skip = "You should have a real good reason to skip a test. A skipped test shouldn't stay skipped very long or should just be deleted if it has become irrelevant")]
