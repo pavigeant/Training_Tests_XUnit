@@ -14,7 +14,7 @@ public class TheoryShould
     }
 
     [Theory]
-    [MemberData(nameof(Data))]
+    [MemberData(nameof(Data))] // Before .Net 7, this will generate a informational message (see global suppression)
     public void AcceptsMemberData(int value)
     {
         Assert.InRange(value, 1, 3);

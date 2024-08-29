@@ -22,12 +22,15 @@ public class AssertShould : IDisposable
         };
     }
 
+    // This method is called after each test in the class is executed
     public void Dispose()
     {
-        // This method is called after each test in the class is executed, mirroring the constructor
+        GC.SuppressFinalize(this);
     }
 
-    [Fact(Skip = "You should have a real good reason to skip a test. A skipped test shouldn't stay skipped very long or should just be deleted if it has become irrelevant")]
+    [Fact(Skip = 
+        "You should have a real good reason to skip a test. " +
+        "A skipped test shouldn't stay skipped very long or should just be deleted if it has become irrelevant")]
     public void SkipTest()
     {
         // This test will be skipped

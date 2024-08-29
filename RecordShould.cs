@@ -3,11 +3,13 @@
 public class RecordShould
 {
     [Fact]
-    public async Task CaptureExceptionWithoutStoppingTheTest()
+    public async Task CaptureAPossibleException()
     {
         static void DoSomethingBad() { throw new ArgumentException("Bad stuff"); }
         static Task DoSomethingBadAsync() { throw new ArgumentException("Bad stuff"); }
 
+        // Record should be used when not testing for exceptions and
+        // you do not care about whether an exception is thrown or not
         var ex1 = Record.Exception(() => DoSomethingBad());
         var ex2 = await Record.ExceptionAsync(() => DoSomethingBadAsync());
 
