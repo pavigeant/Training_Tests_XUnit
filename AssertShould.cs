@@ -120,7 +120,7 @@ public class AssertShould : IDisposable
     [Fact]
     public void CheckForValidRegularExpression()
     {
-        var emailRegEx = "^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$";
+        var emailRegEx = "^[a-zA-Z0-9.!#$%&ï¿½*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$";
         Assert.Matches(emailRegEx, "bob@test.com");
         Assert.DoesNotMatch(emailRegEx, "icantwritenemailproperly@bob@test.com");
 
@@ -156,7 +156,10 @@ public class AssertShould : IDisposable
         Assert.Equal(_students, new List<Student>(_students), (s1, s2) => s1.Name.Equals(s2.Name));
 
         // Support comparer string while ignoring whitespaces
-        Assert.Equal("Hello World\n", "      Hello World\r\n", ignoreLineEndingDifferences: true, ignoreAllWhiteSpace: true, ignoreWhiteSpaceDifferences: true);
+        Assert.Equal("Hello World\n", "      Hello World\r\n",
+            ignoreLineEndingDifferences: true,
+            ignoreAllWhiteSpace: true,
+            ignoreWhiteSpaceDifferences: true);
 
         // When comparing numbers, you can specify a precision or a tolerance
         Assert.Equal(10.005, 10.0051, precision: 3);

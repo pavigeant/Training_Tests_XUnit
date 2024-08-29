@@ -8,7 +8,7 @@ public class CategoryShould
     // 3 million downloads
 
     [Fact] // Or Theory
-    [Trait("Category", "Unit")] // Way of setting a category when only using XUnit
+    [Trait("Category", "Integration")] // Way of setting a category when only using XUnit
 
     [DatabaseTest] // A test that is accessing, reading, or modifying a database
     [IntegrationTest] // A test that is integrating with other systems of the same application
